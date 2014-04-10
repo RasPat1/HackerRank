@@ -1,11 +1,13 @@
 <?php
 function  uTree($n) {
-	$height = 1;
-	for ($i = 1; $i <= $n; $i++) {
-		$height = $i % 2 ? $height * 2 : $height + 1;
-	}
+	$parityAdjust = $n % 2 == 0 ? 0 : 1;
+	$exp = ($n + $parityAdjust) / 2 + 1;
+	$height = pow(2, $exp) - 1 - $parityAdjust;
+
 	echo "$height\n";
 }
+
+
 
 $fp = fopen("php://stdin", "r");
 fscanf($fp, "%d", $m);
